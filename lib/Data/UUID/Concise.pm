@@ -1,8 +1,14 @@
 package Data::UUID::Concise;
 
-use 5.006;
-use strict;
-use warnings;
+use 5.010;
+use strictures;
+
+use Moose;
+
+use Data::UUID;
+use Math::BigInt;
+
+use feature qw[ say ];
 
 =head1 NAME
 
@@ -35,18 +41,63 @@ if you don't export anything, such as for a purely object-oriented module.
 
 =head1 SUBROUTINES/METHODS
 
-=head2 function1
-
 =cut
 
-sub function1 {
+has 'alphabet' => (
+	is => 'rw',
+	isa => 'Str',
+	default => '23456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz',
+);
+
+
+sub encode
+{
+	my ($self, $uuid) = @_;
+
+	my $output = '';
+	my $numeric = Math::BigInt->new((Data::UUID->new)->to_hexstring($uuid));
+	my $alphabet_length = length ($self->alphabet);
+
+	while ($numeric->is_positive) {
+		my $index = $numeric->copy->bmod($alphabet_length);
+		$output .= substr($self->alphabet, $index, 1);
+		$numeric->bdiv($alphabet_length);
+	}
+
+	return $output;
 }
 
-=head2 function2
+sub decode
+{
+	my ($self, $string) = @_;
 
-=cut
+	my $numeric = Math::BigInt->new;
+	my @characters = split //, $string;
+	my $alphabet_length = length ($self->alphabet);
 
-sub function2 {
+	for my $character (@characters) {
+		my $value = index $self->alphabet, $character;
+		$numeric = $numeric->bmul($alphabet_length);
+		$numeric = $numeric->badd($value);
+	}
+
+	return (Data::UUID->new)->from_hexstring($numeric->as_hex);
+}
+
+sub generate_and_encode
+{
+	my ($self) = @_;
+}
+
+sub test
+{
+	my $uuid = (Data::UUID->new)->from_string('6ca4f0f8-2508-4bac-b8f1-5d1e3da2247a');
+	my $duc = Data::UUID::Concise->new;
+	say $duc->encode($uuid);
+
+	say "woop" if (Data::UUID->new)->compare($duc->decode($duc->encode($uuid)), $uuid);
+
+	return 1;
 }
 
 =head1 AUTHOR
@@ -108,4 +159,7 @@ See http://dev.perl.org/licenses/ for more information.
 
 =cut
 
-1; # End of Data::UUID::Concise
+no Moose;
+__PACKAGE__->meta->make_immutable;
+
+exit test() unless caller(0);
