@@ -1,7 +1,8 @@
+use strictures;
+
 package Data::UUID::Concise;
 
 use 5.010;
-use strictures;
 
 use Moose;
 
