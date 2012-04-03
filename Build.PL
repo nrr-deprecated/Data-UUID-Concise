@@ -13,6 +13,8 @@ my $builder = Module::Build->new(
     },
     requires => {
         'perl' => 5.006,
+        'Moo' => 0,
+        'MooX::Types::MooseLike' => 0,
     },
     add_to_cleanup      => [ 'Data-UUID-Concise-*' ],
     create_makefile_pl => 'traditional',
