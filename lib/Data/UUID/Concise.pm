@@ -3,6 +3,9 @@ use strictures;
 package Data::UUID::Concise;
 
 use 5.010;
+use utf8;
+use open qw(:std :utf8);
+use charnames qw(:full :short);
 
 use Moose;
 
