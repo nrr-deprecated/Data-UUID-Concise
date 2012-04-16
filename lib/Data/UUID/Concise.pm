@@ -16,8 +16,9 @@ use Math::BigInt;
 
 use feature qw[ say ];
 
-# ABSTRACT: Encode UUIDs to be more concise or communicable
 # VERSION
+# ABSTRACT: Encode UUIDs to be more concise or communicable
+# ENCODING: utf-8
 
 =head1 SYNOPSIS
 
@@ -29,13 +30,6 @@ Perhaps a little code snippet.
 
     my $foo = Data::UUID::Concise->new();
     ...
-
-=head1 EXPORT
-
-A list of functions that can be exported.  You can delete this section
-if you don't export anything, such as for a purely object-oriented module.
-
-=head1 SUBROUTINES/METHODS
 
 =cut
 
@@ -100,4 +94,3 @@ sub test
 
 1;
 
-exit test() unless caller(0);
