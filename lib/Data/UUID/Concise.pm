@@ -1,6 +1,7 @@
 use strictures;
 
 package Data::UUID::Concise;
+# ABSTRACT: Encode UUIDs to be more concise or communicable
 
 use 5.010;
 
@@ -11,14 +12,7 @@ use Math::BigInt;
 
 use feature qw[ say ];
 
-=head1 NAME
-
-Data::UUID::Concise - The great new Data::UUID::Concise!
-
-=cut
-
 # VERSION 0.01
-our $VERSION = '0.01';
 
 =head1 SYNOPSIS
 
