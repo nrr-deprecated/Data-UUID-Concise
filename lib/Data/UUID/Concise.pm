@@ -76,11 +76,6 @@ sub decode
 	return (Data::UUID->new)->from_hexstring($numeric->as_hex);
 }
 
-sub generate_and_encode
-{
-	my ($self) = @_;
-}
-
 sub test
 {
 	my $uuid = (Data::UUID->new)->from_string('6ca4f0f8-2508-4bac-b8f1-5d1e3da2247a');
