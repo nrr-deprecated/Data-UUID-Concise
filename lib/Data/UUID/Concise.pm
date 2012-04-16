@@ -8,8 +8,10 @@ use utf8;
 use open qw(:std :utf8);
 use charnames qw(:full :short);
 
-use Moose;
+use Moo;
+use MooX::Types::MooseLike::Base qw(:all);
 
+use Carp;
 use Data::UUID;
 use Math::BigInt;
 
@@ -39,8 +41,10 @@ if you don't export anything, such as for a purely object-oriented module.
 
 has 'alphabet' => (
 	is => 'rw',
-	isa => 'Str',
-	default => '23456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz',
+	isa => Str,
+	default => sub {
+		'23456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz'
+	},
 );
 
 
@@ -153,7 +157,6 @@ See http://dev.perl.org/licenses/ for more information.
 
 =cut
 
-no Moose;
-__PACKAGE__->meta->make_immutable;
+1;
 
 exit test() unless caller(0);
