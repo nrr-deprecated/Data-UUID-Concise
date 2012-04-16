@@ -1,24 +1,12 @@
-use strictures;
-
-package Data::UUID::Concise;
-
-use 5.010;
-
-use Moose;
-
-use Data::UUID;
-use Math::BigInt;
-
-use feature qw[ say ];
+=pod
 
 =head1 NAME
 
-Data::UUID::Concise - The great new Data::UUID::Concise!
+Data::UUID::Concise
 
-=cut
+=head1 VERSION
 
-# VERSION 0.01
-our $VERSION = '0.01';
+version 0.121070
 
 =head1 SYNOPSIS
 
@@ -31,71 +19,16 @@ Perhaps a little code snippet.
     my $foo = Data::UUID::Concise->new();
     ...
 
+=head1 NAME
+
+Data::UUID::Concise - The great new Data::UUID::Concise!
+
 =head1 EXPORT
 
 A list of functions that can be exported.  You can delete this section
 if you don't export anything, such as for a purely object-oriented module.
 
 =head1 SUBROUTINES/METHODS
-
-=cut
-
-has 'alphabet' => (
-	is => 'rw',
-	isa => 'Str',
-	default => '23456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz',
-);
-
-
-sub encode
-{
-	my ($self, $uuid) = @_;
-
-	my $output = '';
-	my $numeric = Math::BigInt->new((Data::UUID->new)->to_hexstring($uuid));
-	my $alphabet_length = length ($self->alphabet);
-
-	while ($numeric->is_positive) {
-		my $index = $numeric->copy->bmod($alphabet_length);
-		$output .= substr($self->alphabet, $index, 1);
-		$numeric->bdiv($alphabet_length);
-	}
-
-	return $output;
-}
-
-sub decode
-{
-	my ($self, $string) = @_;
-
-	my $numeric = Math::BigInt->new;
-	my @characters = split //, $string;
-	my $alphabet_length = length ($self->alphabet);
-
-	for my $character (@characters) {
-		my $value = index $self->alphabet, $character;
-		$numeric = $numeric->bmul($alphabet_length);
-		$numeric = $numeric->badd($value);
-	}
-
-	return (Data::UUID->new)->from_hexstring($numeric->as_hex);
-}
-
-sub generate_and_encode
-{
-	my ($self) = @_;
-}
-
-sub test
-{
-	my $uuid = (Data::UUID->new)->from_string('6ca4f0f8-2508-4bac-b8f1-5d1e3da2247a');
-	my $duc = Data::UUID::Concise->new;
-	say $duc->encode($uuid);
-
-	say "woop" if (Data::UUID->new)->compare($duc->decode($duc->encode($uuid)), $uuid);
-
-	return 1;
-}
 
 =head1 AUTHOR
 
@@ -107,15 +40,11 @@ Please report any bugs or feature requests to C<bug-data-uuid-concise at rt.cpan
 the web interface at L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=Data-UUID-Concise>.  I will be notified, and then you'll
 automatically be notified of progress on your bug as I make changes.
 
-
-
-
 =head1 SUPPORT
 
 You can find documentation for this module with the perldoc command.
 
     perldoc Data::UUID::Concise
-
 
 You can also look for information at:
 
@@ -139,9 +68,7 @@ L<http://search.cpan.org/dist/Data-UUID-Concise/>
 
 =back
 
-
 =head1 ACKNOWLEDGEMENTS
-
 
 =head1 LICENSE AND COPYRIGHT
 
@@ -153,10 +80,14 @@ by the Free Software Foundation; or the Artistic License.
 
 See http://dev.perl.org/licenses/ for more information.
 
+=head1 AUTHOR
 
-=cut
+Nathaniel Reindl <nrr@corvidae.org>
 
-no Moose;
-__PACKAGE__->meta->make_immutable;
+=head1 COPYRIGHT AND LICENSE
 
-exit test() unless caller(0);
+This software is copyright (c) 2012 by Nathaniel Reindl.
+
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
+
