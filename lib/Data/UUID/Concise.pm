@@ -1,7 +1,6 @@
 use strictures;
 
 package Data::UUID::Concise;
-# ABSTRACT: Encode UUIDs to be more concise or communicable
 
 use 5.010;
 use utf8;
@@ -17,7 +16,9 @@ use Math::BigInt;
 
 use feature qw[ say ];
 
-# VERSION 0.01
+# VERSION
+# ABSTRACT: Encode UUIDs to be more concise or communicable
+# ENCODING: utf-8
 
 =head1 SYNOPSIS
 
@@ -29,13 +30,6 @@ Perhaps a little code snippet.
 
     my $foo = Data::UUID::Concise->new();
     ...
-
-=head1 EXPORT
-
-A list of functions that can be exported.  You can delete this section
-if you don't export anything, such as for a purely object-oriented module.
-
-=head1 SUBROUTINES/METHODS
 
 =cut
 
@@ -97,65 +91,6 @@ sub test
 
 	return 1;
 }
-
-=head1 AUTHOR
-
-Nathaniel Reindl, C<< <nrr at corvidae.org> >>
-
-=head1 BUGS
-
-Please report any bugs or feature requests to C<bug-data-uuid-concise at rt.cpan.org>, or through
-the web interface at L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=Data-UUID-Concise>.  I will be notified, and then you'll
-automatically be notified of progress on your bug as I make changes.
-
-
-
-
-=head1 SUPPORT
-
-You can find documentation for this module with the perldoc command.
-
-    perldoc Data::UUID::Concise
-
-
-You can also look for information at:
-
-=over 4
-
-=item * RT: CPAN's request tracker (report bugs here)
-
-L<http://rt.cpan.org/NoAuth/Bugs.html?Dist=Data-UUID-Concise>
-
-=item * AnnoCPAN: Annotated CPAN documentation
-
-L<http://annocpan.org/dist/Data-UUID-Concise>
-
-=item * CPAN Ratings
-
-L<http://cpanratings.perl.org/d/Data-UUID-Concise>
-
-=item * Search CPAN
-
-L<http://search.cpan.org/dist/Data-UUID-Concise/>
-
-=back
-
-
-=head1 ACKNOWLEDGEMENTS
-
-
-=head1 LICENSE AND COPYRIGHT
-
-Copyright 2012 Nathaniel Reindl.
-
-This program is free software; you can redistribute it and/or modify it
-under the terms of either: the GNU General Public License as published
-by the Free Software Foundation; or the Artistic License.
-
-See http://dev.perl.org/licenses/ for more information.
-
-
-=cut
 
 1;
 
