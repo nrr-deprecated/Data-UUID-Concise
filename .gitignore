@@ -13,3 +13,5 @@ pod2htm*.tmp
 Data-UUID-Concise-*
 META.json
 MANIFEST
+README.pod
+Changes
