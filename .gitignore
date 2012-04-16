@@ -11,7 +11,5 @@ pm_to_blib*
 cover_db
 pod2htm*.tmp
 Data-UUID-Concise-*
-META.json
 MANIFEST
-README.pod
 Changes
