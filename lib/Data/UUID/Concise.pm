@@ -33,6 +33,10 @@ Perhaps a little code snippet.
 
 =cut
 
+=attr alphabet
+
+=cut
+
 has 'alphabet' => (
 	is => 'rw',
 	isa => Str,
@@ -41,6 +45,9 @@ has 'alphabet' => (
 	},
 );
 
+=method encode
+
+=cut
 
 sub encode
 {
@@ -58,6 +65,10 @@ sub encode
 
 	return $output;
 }
+
+=method decode
+
+=cut
 
 sub decode
 {
