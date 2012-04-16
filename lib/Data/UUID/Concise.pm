@@ -87,16 +87,5 @@ sub decode
 	return (Data::UUID->new)->from_hexstring($numeric->as_hex);
 }
 
-sub test
-{
-	my $uuid = (Data::UUID->new)->from_string('6ca4f0f8-2508-4bac-b8f1-5d1e3da2247a');
-	my $duc = Data::UUID::Concise->new;
-	say $duc->encode($uuid);
-
-	say "woop" if (Data::UUID->new)->compare($duc->decode($duc->encode($uuid)), $uuid);
-
-	return 1;
-}
-
 1;
 

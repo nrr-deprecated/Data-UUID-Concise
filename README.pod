@@ -24,6 +24,16 @@ Perhaps a little code snippet.
     my $foo = Data::UUID::Concise->new();
     ...
 
+=head1 ATTRIBUTES
+
+=head2 alphabet
+
+=head1 METHODS
+
+=head2 encode
+
+=head2 decode
+
 =head1 SUPPORT
 
 =head2 Perldoc
