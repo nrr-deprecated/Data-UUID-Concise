@@ -32,12 +32,17 @@
       },
       "runtime" : {
          "requires" : {
+            "Carp" : "0",
             "Data::UUID" : "0",
             "Math::BigInt" : "0",
-            "Moose" : "0",
+            "Moo" : "0",
+            "MooX::Types::MooseLike::Base" : "0",
+            "charnames" : "0",
             "feature" : "0",
+            "open" : "0",
             "perl" : "5.010",
-            "strictures" : "0"
+            "strictures" : "0",
+            "utf8" : "0"
          }
       },
       "test" : {
