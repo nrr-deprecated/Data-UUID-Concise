@@ -58,7 +58,7 @@
    "provides" : {
       "Data::UUID::Concise" : {
          "file" : "lib/Data/UUID/Concise.pm",
-         "version" : "0.121070"
+         "version" : "0.121080"
       }
    },
    "release_status" : "stable",
@@ -74,6 +74,6 @@
          "web" : "https://github.com/nrr/Data-UUID-Concise"
       }
    },
-   "version" : "0.121070"
+   "version" : "0.121080"
 }
 
