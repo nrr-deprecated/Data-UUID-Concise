@@ -1,3 +1,5 @@
+use warnings;
+use strict;
 use strictures;
 
 package Data::UUID::Concise;
