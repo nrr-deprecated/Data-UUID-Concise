@@ -39,11 +39,11 @@ of the base 58 scheme used by a rather prominent photo site's URL shortener.
 =cut
 
 has 'alphabet' => (
-	is => 'rw',
-	isa => Str,
-	default => sub {
-		'23456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz'
-	},
+    is      => 'rw',
+    isa     => Str,
+    default => sub {
+        '23456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz';
+    },
 );
 
 =method encode
@@ -54,19 +54,20 @@ Encode a Data::UUID instance as a string with the appropriate set of symbols.
 
 sub encode
 {
-	my ($self, $uuid) = @_;
+    my ( $self, $uuid ) = @_;
 
-	my $output = '';
-	my $numeric = Math::BigInt->new((Data::UUID->new)->to_hexstring($uuid));
-	my $alphabet_length = length ($self->alphabet);
+    my $output = '';
+    my $numeric =
+        Math::BigInt->new( ( Data::UUID->new )->to_hexstring( $uuid ) );
+    my $alphabet_length = length( $self->alphabet );
 
-	while ($numeric->is_positive) {
-		my $index = $numeric->copy->bmod($alphabet_length);
-		$output .= substr($self->alphabet, $index, 1);
-		$numeric->bdiv($alphabet_length);
-	}
+    while ( $numeric->is_positive ) {
+        my $index = $numeric->copy->bmod( $alphabet_length );
+        $output .= substr( $self->alphabet, $index, 1 );
+        $numeric->bdiv( $alphabet_length );
+    }
 
-	return $output;
+    return $output;
 }
 
 =method decode
@@ -78,19 +79,19 @@ instance representing the decoded UUID.
 
 sub decode
 {
-	my ($self, $string) = @_;
+    my ( $self, $string ) = @_;
 
-	my $numeric = Math::BigInt->new;
-	my @characters = split //, $string;
-	my $alphabet_length = length ($self->alphabet);
+    my $numeric         = Math::BigInt->new;
+    my @characters      = split //, $string;
+    my $alphabet_length = length( $self->alphabet );
 
-	for my $character (@characters) {
-		my $value = index $self->alphabet, $character;
-		$numeric = $numeric->bmul($alphabet_length);
-		$numeric = $numeric->badd($value);
-	}
+    for my $character ( @characters ) {
+        my $value = index $self->alphabet, $character;
+        $numeric = $numeric->bmul( $alphabet_length );
+        $numeric = $numeric->badd( $value );
+    }
 
-	return (Data::UUID->new)->from_hexstring($numeric->as_hex);
+    return ( Data::UUID->new )->from_hexstring( $numeric->as_hex );
 }
 
 1;
