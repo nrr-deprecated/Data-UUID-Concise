@@ -11,7 +11,7 @@ Data::UUID::Concise - Encode UUIDs to be more concise or communicable
 
 =head1 VERSION
 
-version 0.121080
+version 0.121081
 
 =head1 SYNOPSIS
 
