@@ -22,18 +22,19 @@ use feature qw[ say ];
 
 =head1 SYNOPSIS
 
-Quick summary of what the module does.
-
-Perhaps a little code snippet.
-
     use Data::UUID::Concise;
 
-    my $foo = Data::UUID::Concise->new();
-    ...
+    my $duc = Data::UUID::Concise->new();
+    my $encoded_uuid = $duc->encode((Data::UUID->new)->create);
+    my $decoded_uuid = $duc->decode('M55djt9tt4WoFaL68da9Ef');
 
 =cut
 
 =attr alphabet
+
+This is the collection of symbols that are used for the encoding scheme. By
+default, a reasonably unambiguous set of characters is used that is reminiscent
+of the base 58 scheme used by a rather prominent photo site's URL shortener.
 
 =cut
 
@@ -46,6 +47,8 @@ has 'alphabet' => (
 );
 
 =method encode
+
+Encode a Data::UUID instance as a string with the appropriate set of symbols.
 
 =cut
 
@@ -67,6 +70,9 @@ sub encode
 }
 
 =method decode
+
+Decode a string with the appropriate set of symbols and return a Data::UUID
+instance representing the decoded UUID.
 
 =cut
 
