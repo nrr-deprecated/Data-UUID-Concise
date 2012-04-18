@@ -1,5 +1,3 @@
-use warnings;
-use strict;
 use strictures;
 
 package Data::UUID::Concise;
@@ -15,8 +13,6 @@ use MooX::Types::MooseLike::Base qw(:all);
 use Carp;
 use Data::UUID;
 use Math::BigInt;
-
-use feature qw[ say ];
 
 # VERSION
 # ABSTRACT: Encode UUIDs to be more concise or communicable
