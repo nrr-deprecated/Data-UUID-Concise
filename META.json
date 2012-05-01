@@ -19,9 +19,6 @@
          "xt",
          "examples",
          "corpus"
-      ],
-      "package" : [
-         "DB"
       ]
    },
    "prereqs" : {
@@ -40,7 +37,7 @@
             "charnames" : "0",
             "open" : "0",
             "perl" : "5.010",
-            "strictures" : "0",
+            "strictures" : "1",
             "utf8" : "0"
          }
       },
@@ -58,7 +55,7 @@
    "provides" : {
       "Data::UUID::Concise" : {
          "file" : "lib/Data/UUID/Concise.pm",
-         "version" : "0.121090"
+         "version" : "0.121220"
       }
    },
    "release_status" : "stable",
@@ -74,6 +71,6 @@
          "web" : "https://github.com/nrr/Data-UUID-Concise"
       }
    },
-   "version" : "0.121090"
+   "version" : "0.121220"
 }
 
