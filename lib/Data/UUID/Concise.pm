@@ -61,8 +61,8 @@ around 'alphabet' => sub {
 
 =func _normalize_alphabet
 
-Private method. Normalize the alphabet such that it is sorted and that
-all elements are distinct.
+Normalize the alphabet such that it is sorted and that all elements
+are distinct.
 
 =cut
 
