@@ -2,6 +2,10 @@ Revision history for Data::UUID::Concise
 
 {{$NEXT}}
 
+0.121240  2012-05-03 10:11:50 America/Chicago
+
+	- We actually support changing the alphabet now.
+
 0.121082  2012-04-17 05:13:05 America/Chicago
 
 	- Yet another test release, now with more feeling.
