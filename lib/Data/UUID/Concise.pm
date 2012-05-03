@@ -49,13 +49,17 @@ has 'alphabet' => (
     default => sub {
         '23456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz';
     },
-    trigger => sub {
-    	my ($self, @rest) = @_;
-    	$self->_normalize_alphabet(@rest);
-    },
 );
 
-=method _normalize_alphabet
+around 'alphabet' => sub {
+    my ($next, $self, @rest) = @_;
+    return $self->$next unless @rest;
+
+    my ($alphabet_candidate) = @rest;
+    return $self->$next(_normalize_alphabet($alphabet_candidate));
+};
+
+=func _normalize_alphabet
 
 Private method. Normalize the alphabet such that it is sorted and that
 all elements are distinct.
@@ -64,13 +68,13 @@ all elements are distinct.
 
 sub _normalize_alphabet
 {
-    my ($self, $alphabet_candidate) = @_;
+    my ($alphabet_candidate) = @_;
 
     my @symbols = split //, $alphabet_candidate;
     my @decruftified_symbols = uniq sort { $a cmp $b } @symbols;
     my $decruftified_alphabet = join '', @decruftified_symbols;
 
-    return $self->alphabet($decruftified_alphabet);
+    return $decruftified_alphabet;
 }
 
 =method encode
