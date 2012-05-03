@@ -31,6 +31,7 @@
          "requires" : {
             "Carp" : "0",
             "Data::UUID" : "0",
+            "List::MoreUtils" : "0",
             "Math::BigInt" : "0",
             "Moo" : "0",
             "MooX::Types::MooseLike::Base" : "0",
@@ -55,7 +56,7 @@
    "provides" : {
       "Data::UUID::Concise" : {
          "file" : "lib/Data/UUID/Concise.pm",
-         "version" : "0.121220"
+         "version" : "0.121240"
       }
    },
    "release_status" : "stable",
@@ -71,6 +72,6 @@
          "web" : "https://github.com/nrr/Data-UUID-Concise"
       }
    },
-   "version" : "0.121220"
+   "version" : "0.121240"
 }
 
